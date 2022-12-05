@@ -12,11 +12,17 @@ const Characters = () => {
     fetchCharacters()
   }, [])
 
-  characters.map(character => console.log(character))
-
+  
+  if (!characters) return <h1>Characters Loading...</h1>
   return ( 
     <>
       <h1>Marvel Characters</h1>
+      {characters.map( character => 
+        <article key={character.id}>
+          <h3>{character.name}</h3>
+          <p>{character.description}</p>
+        </article>
+      )}
     </>
   );
 }
